@@ -5,10 +5,13 @@ const data = document.createElement('div')
 data.classList.add('well-segment')
 infoWell.append(data)
 const createGitlabApiQuery = (url) => {
-  const PIPELINE_STRING = '/-/pipelines/'
-  const projectName = url.substring('https://gitlab.com/'.length, url.indexOf(PIPELINE_STRING))
-  const projectId = encodeURIComponent(projectName)
-  const pipelineId = url.substring(url.indexOf(PIPELINE_STRING) + PIPELINE_STRING.length)
+  const regex = /https:\/\/gitlab.com\/(.+)\/-\/pipelines\/(\d+)/
+  const found = url.match(regex)
+  if (found.length !== 3) {
+    throw new Error(url + ' doesnt match expected regex ' + regex)
+  }
+  const projectId = encodeURIComponent(found[1])
+  const pipelineId = found[2]
   return 'https://gitlab.com/api/v4/projects/' + projectId + '/pipelines/' + pipelineId
 }
 const jsonInPreTag = (json) => {
