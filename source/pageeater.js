@@ -3,6 +3,7 @@ const browser = require('webextension-polyfill')
 const infoWell = document.getElementsByClassName('info-well')[0]
 const data = document.createElement('div')
 data.classList.add('well-segment')
+infoWell.append(data)
 const createGitlabApiQuery = (url) => {
   const PIPELINE_STRING = '/-/pipelines/'
   const projectName = url.substring('https://gitlab.com/'.length, url.indexOf(PIPELINE_STRING))
@@ -42,14 +43,10 @@ try {
       data.append(jsonInPreTag(result))
     })
     fetchWithToken(gitlabToken, apiUrl + '/variables').then(function (result) {
-      data.append(jsonInPreTag(result))
+      data.prepend(jsonInPreTag(result))
     })
   })
 } catch (e) {
   console.error(e)
   data.textContent = e
 }
-
-
-
-infoWell.append(data)
