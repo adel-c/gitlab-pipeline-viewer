@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
   devtool: 'source-map',
   entry: {
-    pageeater: './source/pageeater'
+    pipelineData: './source/pipelineData'
   },
   output: {
     path: path.join(__dirname, 'distribution'),

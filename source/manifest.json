@@ -23,7 +23,7 @@
       ],
       "js": [
         "browser-polyfill.min.js",
-        "pageeater.js"
+        "pipelineData.js"
       ]
     }
   ],
