@@ -1,4 +1,4 @@
-const browser = window.browser
+const browser = require('webextension-polyfill')
 
 function saveOptions (e) {
   e.preventDefault()
