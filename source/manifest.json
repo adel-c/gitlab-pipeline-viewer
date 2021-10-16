@@ -1,20 +1,32 @@
 {
-	"name": "Open In Bundle Viewer",
-	"version": "1.3.0",
-	"description": "Add a link to open in OctoPrint's bundle viewer in the context menu",
-	"homepage_url": "https://github.com/OctoPrint/Open-in-Bundle-Viewer",
-	"manifest_version": 2,
-	"minimum_chrome_version": "74",
-	"icons": {
-	  	"16": "img/tentacle-16.png",
-	  	"32": "img/tentacle-16.png",
-	  	"48": "img/tentacle-16.png",
-		"128": "img/tentacle-128.png"
-	},
-	"permissions": [
-	  "contextMenus",
+  "name": "Open In Bundle Viewer",
+  "version": "1.3.0",
+  "description": "Add a link to open in OctoPrint's bundle viewer in the context menu",
+  "homepage_url": "https://github.com/OctoPrint/Open-in-Bundle-Viewer",
+  "manifest_version": 2,
+  "minimum_chrome_version": "74",
+  "icons": {
+    "16": "img/tentacle-16.png",
+    "32": "img/tentacle-16.png",
+    "48": "img/tentacle-16.png",
+    "128": "img/tentacle-128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "contextMenus",
     "storage"
-	],
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://gitlab.com/*/-/pipelines/*"
+      ],
+      "js": [
+        "browser-polyfill.min.js",
+        "pageeater.js"
+      ]
+    }
+  ],
   "browser_specific_settings": {
     "gecko": {
       "id": "test-gitlab-integ@notlmn.github.io",
@@ -24,12 +36,5 @@
   "options_ui": {
     "chrome_style": true,
     "page": "options.html"
-  },
-	"background": {
-		"persistent": false,
-		"scripts": [
-			"browser-polyfill.min.js",
-			"background.js"
-		]
-	}
+  }
 }

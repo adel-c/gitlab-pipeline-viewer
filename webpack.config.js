@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
   devtool: 'source-map',
   entry: {
-    background: './source/background'
+    pageeater: './source/pageeater'
   },
   output: {
     path: path.join(__dirname, 'distribution'),
