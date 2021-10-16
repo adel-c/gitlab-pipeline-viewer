@@ -6,10 +6,7 @@
   "manifest_version": 2,
   "minimum_chrome_version": "74",
   "icons": {
-    "16": "img/tentacle-16.png",
-    "32": "img/tentacle-16.png",
-    "48": "img/tentacle-16.png",
-    "128": "img/tentacle-128.png"
+    "48": "img/outline_code_black_48dp.png"
   },
   "permissions": [
     "activeTab",

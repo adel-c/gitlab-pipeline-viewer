@@ -1,6 +1,6 @@
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-
+var ZipPlugin = require('zip-webpack-plugin')
 module.exports = {
   devtool: 'source-map',
   entry: {
@@ -21,9 +21,9 @@ module.exports = {
         },
         {
           from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js'
-        }
-      ]
+        }]
     }
-    )
+    ),
+    new ZipPlugin({ filename: 'gitlab-pipeline-data.zip' })
   ]
 }
